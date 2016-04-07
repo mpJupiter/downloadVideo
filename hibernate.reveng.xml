@@ -14,8 +14,14 @@
 			<generator class="increment"></generator>
 		</primary-key>
 	</table>
-<table name="t_videotype" catalog="downloadvideo"
-	class="com.download.model.Videotype">
+	<table name="t_videotype" catalog="downloadvideo"
+		class="com.download.model.Videotype">
+		<primary-key>
+			<generator class="increment"></generator>
+		</primary-key>
+	</table>
+<table name="t_download" catalog="downloadvideo"
+	class="com.download.model.Download">
 	<primary-key>
 		<generator class="increment"></generator>
 	</primary-key>

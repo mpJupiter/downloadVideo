@@ -32,16 +32,19 @@
 		<!--每60秒检查所有连接池中的空闲连接。Default: 0 -->
 		<property name="idleConnectionTestPeriod" value="60"/>
 	</bean>
-	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"/><!-- 这个属性的作用是数据源！ -->
-		 <property name="mappingResources"><!-- 这个属性的作用是映射数据表！ -->
+		 
+		 <!-- 
+		 <property name="mappingResources">	 这个属性的作用是映射数据表！ 
 			    <list>
-			      <value>com/download/model/Customer.hbm.xml</value><!-- 从数据库表中映射过来的映射文件，以后要修改数据库中的数据时就可以不用再数据库里修改了，直接在这些对应的映射文件里修改！ -->
+			      <value>com/download/model/Customer.hbm.xml</value> 从数据库表中映射过来的映射文件，以后要修改数据库中的数据时就可以不用再数据库里修改了，直接在这些对应的映射文件里修改！ 
 			      <value>com/download/model/Video.hbm.xml</value>
 			      <value>com/download/model/Videotype.hbm.xml</value>
-                  <!-- 相关数据库的表映射到web工程后对应的映射文件！当形成映射文件后需要对数据库里的数据进行修改时就不需要去数据库里修改了，只需要在映射文件里修改即可！ -->
+                 		 相关数据库的表映射到web工程后对应的映射文件！当形成映射文件后需要对数据库里的数据进行修改时就不需要去数据库里修改了，只需要在映射文件里修改即可！ 
 			    </list>
 		</property>
+		 -->
 		 <property name="hibernateProperties">
 			 <value>
 			      hibernate.dialect=org.hibernate.dialect.MySQL5Dialect
@@ -50,6 +53,8 @@
 			      hibernate.format_sql=false
 			  </value>
 		 </property>
+		 <!-- 新增  自动扫描实体 -->
+		 <property name = "packagesToScan" value="com.download.model"></property>
 	</bean>
 	<bean id="txManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory"/><!-- 这个属性的功能是做数据库的连接与关闭的！ -->

@@ -32,7 +32,7 @@ public class VideoDao {
     	  s.update(video);
       }
       //查所有的video
-      public ArrayList<Video> QueryAllVideo(){
+      public ArrayList<Video> QueryAllVideoInfo(){
     	  Session s=factory.getCurrentSession();
     	  String hql="From Video";
     	  Query q=s.createQuery(hql);

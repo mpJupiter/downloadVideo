@@ -20,6 +20,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link rel="shortcut icon" href="<%=basePath%>images/logo.png"/>	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/bootstrap.css"/>
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/main.css">
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/font-awesome.css"/>	
   </head>

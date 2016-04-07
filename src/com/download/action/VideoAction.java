@@ -27,7 +27,7 @@ public class VideoAction extends ActionSupport{
 	@Resource VideoDao videoDao;
 	@Resource VideoTypeDao videoTypeDao;
 	private Video video;
-	
+	private static final long serialVersionUID = 1L;
 	
 	public Video getVideo() {
 		return video;
@@ -124,14 +124,14 @@ public class VideoAction extends ActionSupport{
 	}
 	
 	public String showVideo(){
-		videoList=videoDao.QueryAllVideo();
+		videoList=videoDao.QueryAllVideoInfo();
 		return "show_view";
 	}
 	public String showDetail(){
 		video = videoDao.GetVideoById(video.getVideoId());
 		return "detail_view";
 	}
-
+	
 	public String showEdit() throws Exception{
 		video = videoDao.GetVideoById(video.getVideoId());
 		return "edit_view";
@@ -142,6 +142,8 @@ public class VideoAction extends ActionSupport{
 		return "edit_message";
 	}
 	
+	
+	//删除video
 	public String deleteVideo() throws Exception{
 		videoDao.deleteVideo(video.getVideoId());
 		return "delete_message";
@@ -154,7 +156,7 @@ public class VideoAction extends ActionSupport{
 	public void setKeyWords(String keyWords) {
 		this.keyWords = keyWords;
 	}
-	
+	//查询video
 	public String queryVideo() throws Exception{
 		videoList = videoDao.QueryVideoInfo(keyWords);
 		return "show_view";
