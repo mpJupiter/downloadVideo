@@ -58,9 +58,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               </div> 
             </div>
 
-			<div class="container">
-				<div id="block_right">
-					<div style="float: right; position: relative; top: -20px; height: 40px;">
+			<div class="containered">
+					<div style="float: right; position: relative; top: 0px; height: 40px;">
 						<div class="bdsharebuttonbox">
 							<a href="#" class="bds_more" data-cmd="more"></a>
 							<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
@@ -72,35 +71,53 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
 						</script>
 					</div>
-				</div>
 			</div>
 			
-			
-			<ul>			
-				
+		 <ul>
+	      <s:if test="#session.customer.customerName =='admin'">			
 				<li>
-				<p>
 					<div class="add"><a href="addVideo.jsp"><i class="fa fa-plus"></i>添加影片</a></div>
-				</p>
-				<s:iterator value="videoList" status="status">
-				
-            		<img src="<%=basePath%><s:property value='picture'/>">
-            		<p>
-              		<a href="video/video_showDetail?video.videoId=<s:property value='videoId'/>">
-                		<s:property value="videoName"/>
-              		</a>
-              		<a href="video/video_showEdit?video.videoId=<s:property value='videoId'/>">
-            		    <i class = "fa fa-pencil"></i>
-              		</a>
-          		    <a href="video/video_deleteVideo?video.videoId=<s:property value='vieoId'/>">
-           	 	    <i class = "fa fa-trash"></i></a>
-           	 	    <a href ="<%=basePath%><s:property value='path'/>">
-            		    <i class = "fa fa-download"></i></a>
-            		</p>
-          		
-			</s:iterator>
-			</li>	
+				</li>	
+	        	<s:iterator value="videoList" status="status">
+					<li>
+            			<img src="<%=basePath%><s:property value='picture'/>">
+            			<p>
+              				<a href="video/video_showDetail?video.videoId=<s:property value='videoId'/>">
+                				<s:property value="videoName"/>
+              				</a>
+              				<a href="video/video_showEdit?video.videoId=<s:property value='videoId'/>">
+            		    		<i class = "fa fa-pencil"></i>
+              				</a>
+          		    		<a href="video/video_deleteVideo?video.videoId=<s:property value='vieoId'/>">
+           	 	    			<i class = "fa fa-trash"></i></a>
+           	 	    		<a href ="<%=basePath%><s:property value='path'/>">
+            		  	 		<i class = "fa fa-download"></i></a>
+            			</p>
+          			</li>	
+				</s:iterator>
+		 	</s:if>
+		 	<s:else>
+		 		<s:iterator value="videoList" status="status">
+		 			<li>
+		 				<img src="<%=basePath%><s:property value='picture'/>"/>
+		 				<p>
+		 					<a href="video/video_showDetail?video.videoId=<s:property value='videoId'/>">
+                				<s:property value="videoName"/>
+              				</a>
+		 				<!-- <a href="download/download_addDownload?video.videoId=<s:property value='videoId'/>&customer.customerName=<s:property value='#session.customer.customerName'/>" class="add-download">
+		 						<i class="fa fa-download"></i>
+		 					</a>
+		 					 -->
+		 					<a href="<%=basePath%><s:property value='path'/>">
+		 						<i class="fa fa-download"></i>
+		 					</a>
+		 				</p>
+		 			</li>
+		 		</s:iterator>
+		 	</s:else>
           		</ul>
+          		
+          		
 			</s:form>
 		</main>
 	</body>
