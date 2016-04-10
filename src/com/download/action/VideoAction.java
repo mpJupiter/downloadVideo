@@ -1,5 +1,10 @@
 package com.download.action;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.*;
 
 import javax.annotation.Resource;
@@ -16,20 +21,22 @@ import com.download.model.Video;
 import com.download.model.Videotype;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import java.io.*;
 
 @Controller @Scope("prototype")
 public class VideoAction extends ActionSupport{
 	@Resource VideoDao videoDao;
 	@Resource VideoTypeDao videoTypeDao;
 	private Video video;
-	private List<Video> videoList;
+	private static final long serialVersionUID = 1L;
+	
 	public Video getVideo() {
 		return video;
 	}
 	public void setVideo(Video video) {
 		this.video = video;
 	}
+	private List<Video> videoList;
+	
 	public List<Video> getVideoList() {
 		return videoList;
 	}
@@ -55,61 +62,61 @@ public class VideoAction extends ActionSupport{
 			this.videoFileContentType = videoFileContentType;
 		}
 	@SuppressWarnings("deprecation")
-   public String AddPhoto() {
+    public String AddPhoto() {
 		
-       ActionContext ctx = ActionContext.getContext();
-       String name = video.getVideoName();
-       Video db_book = videoDao.GetVideoByNum(name);
-       if(null != db_book) {
-           ctx.put("error",  java.net.URLEncoder.encode("该videoid已经存在!"));
-           return "error";
-       }
-       if(true) {
-           Videotype videoType = videoTypeDao.GetVideotypeByNum(video.getVideotype().getVideoTypeName());
-           video.setVideotype(videoType);
-           }
-       try {
-               String path = ServletActionContext.getServletContext().getRealPath("/video"); 
-               /*处理上传*/
-               String videoFileName = ""; 
-          	 	if(videoFile != null) {
-          	 		InputStream is = new FileInputStream(videoFile);
-          			String fileContentType = this.getVideoFileContentType();
-          			if(fileContentType.equals("video/flv"))
-          				videoFileName = UUID.randomUUID().toString() +  ".jpg";
-          			else if(fileContentType.equals("video/rmvb"))
-          				videoFileName = UUID.randomUUID().toString() +  ".rmvb";
-          			else if(fileContentType.equals("video/mkv"))
-          				videoFileName = UUID.randomUUID().toString() +  ".mkv";
-          			else if(fileContentType.equals("video/mp4"))
-          				videoFileName = UUID.randomUUID().toString() +  ".mp4";
-          			else {
-          				ctx.put("error",  java.net.URLEncoder.encode("上传视频不正确!"));
-          				return "error";
-          			}
-          			File file = new File(path, videoFileName);
-          			OutputStream os = new FileOutputStream(file);
-          			byte[] b = new byte[1024];
-          			int bs = 0;
-          			while ((bs = is.read(b)) > 0) {
-          				os.write(b, 0, bs);
-          			}
-          			is.close();
-          			os.close();
-          	 	}
-               if(videoFile != null)
-               	video.setPath("video/" + videoFileName);
-               else
-               	video.setPath("video/NoVideo.mp4");
-               videoDao.addVideo(video);
-               ctx.put("message",  java.net.URLEncoder.encode("video添加成功!"));
-               return "message";
-           } catch (Exception e) {
-               e.printStackTrace();
-               ctx.put("error",  java.net.URLEncoder.encode("video添加失败!"));
-               return "error";
-           }
-   }
+        ActionContext ctx = ActionContext.getContext();
+        int id = video.getVideoId();
+        Video db_book = videoDao.GetVideoById(id);
+        if(null != db_book) {
+            ctx.put("error",  java.net.URLEncoder.encode("该videoid已经存在!"));
+            return "error";
+        }
+        if(true) {
+            Videotype videoType = videoTypeDao.GetVideotypeByVideoTypeId(video.getVideotype().getVideoTypeId());
+            video.setVideotype(videoType);
+            }
+        try {
+                String path = ServletActionContext.getServletContext().getRealPath("/video"); 
+                /*处理上传*/
+                String videoFileName = ""; 
+           	 	if(videoFile != null) {
+           	 		InputStream is = new FileInputStream(videoFile);
+           			String fileContentType = this.getVideoFileContentType();
+           			if(fileContentType.equals("video/flv"))
+           				videoFileName = UUID.randomUUID().toString() +  ".jpg";
+           			else if(fileContentType.equals("video/rmvb"))
+           				videoFileName = UUID.randomUUID().toString() +  ".rmvb";
+           			else if(fileContentType.equals("video/mkv"))
+           				videoFileName = UUID.randomUUID().toString() +  ".mkv";
+           			else if(fileContentType.equals("video/mp4"))
+           				videoFileName = UUID.randomUUID().toString() +  ".mp4";
+           			else {
+           				ctx.put("error",  java.net.URLEncoder.encode("上传视频不正确!"));
+           				return "error";
+           			}
+           			File file = new File(path, videoFileName);
+           			OutputStream os = new FileOutputStream(file);
+           			byte[] b = new byte[1024];
+           			int bs = 0;
+           			while ((bs = is.read(b)) > 0) {
+           				os.write(b, 0, bs);
+           			}
+           			is.close();
+           			os.close();
+           	 	}
+                if(videoFile != null)
+                	video.setPath("video/" + videoFileName);
+                else
+                	video.setPath("video/NoVideo.mp4");
+                videoDao.addVideo(video);
+                ctx.put("message",  java.net.URLEncoder.encode("video添加成功!"));
+                return "message";
+            } catch (Exception e) {
+                e.printStackTrace();
+                ctx.put("error",  java.net.URLEncoder.encode("video添加失败!"));
+                return "error";
+            }
+    }
 	
 	public String addVideo() throws Exception{
 		videoDao.addVideo(video);
@@ -117,16 +124,16 @@ public class VideoAction extends ActionSupport{
 	}
 	
 	public String showVideo(){
-		videoList=videoDao.QueryAllVideo();
+		videoList=videoDao.QueryAllVideoInfo();
 		return "show_view";
 	}
 	public String showDetail(){
-		video = videoDao.GetVideoByNum(video.getVideoName());
+		video = videoDao.GetVideoById(video.getVideoId());
 		return "detail_view";
 	}
-
+	
 	public String showEdit() throws Exception{
-		video = videoDao.GetVideoByNum(video.getVideoName());
+		video = videoDao.GetVideoById(video.getVideoId());
 		return "edit_view";
 	}
 	
@@ -135,8 +142,10 @@ public class VideoAction extends ActionSupport{
 		return "edit_message";
 	}
 	
+	
+	//删除video
 	public String deleteVideo() throws Exception{
-		videoDao.deleteVideo(video.getVideoName());
+		videoDao.deleteVideo(video.getVideoId());
 		return "delete_message";
 	}
 	
@@ -147,9 +156,9 @@ public class VideoAction extends ActionSupport{
 	public void setKeyWords(String keyWords) {
 		this.keyWords = keyWords;
 	}
-	
+	//查询video
 	public String queryVideo() throws Exception{
-		videoList = videoDao.QueryVideo(keyWords);
+		videoList = videoDao.QueryVideoInfo(keyWords);
 		return "show_view";
 	}
 	public Videotype videoType;
@@ -163,5 +172,3 @@ public class VideoAction extends ActionSupport{
 	}
 	
 }
-
-

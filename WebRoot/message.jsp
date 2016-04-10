@@ -17,13 +17,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
 	<meta http-equiv="Refresh" content="2;url=video/video_showVideo">
-	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/main.css">
-	<link rel="shortcut icon" href="<%=basePath%>images//logo3.png">
-	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/font-awesome.css">
-	<!--
+	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/base.css">
+	<link rel="shortcut icon" href="<%=basePath%>images/logo.png"/>	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
+	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/main.css">
+	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/font-awesome.css"/>
   </head>
   
   <body>

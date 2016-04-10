@@ -60,15 +60,15 @@ main .input-group{
 	margin:20px 30px;
 }
 main ul{
-	width:1400px;
-	margin:0 auto;
+	width:1040px;
+	margin:0 auto;/*这一列从页面的中间位置开始排列*/
 	padding-left: 0;
 	list-style: none;
 	
 }
 main ul li{
 
-	display:inline-block;
+	display:inline-block;/*采用内连方式排列图片，即一行排列，直到一行排完才会跳转到下一行。*/
 }
 main ul li .add{
 	
@@ -77,9 +77,9 @@ main ul li .add{
 	padding:5px;
 	width:300px;
 	height:250px;
-	border:4px solid silver;
+	border:4px solid silver;/*给图片加上银色的边框*/
 	border-radius:8px;
-	text-align:centre;	
+	text-align:center;	
 }
 
 main ul li .add >a{
@@ -94,9 +94,9 @@ main ul li .add:hover{
 main ul li img{
 	margin:30px 20px 0px 20px;
 	padding:5px;
-	width:370px;
-	height:300px;
-	border:4px solid blue;
+	width:300px;
+	height:250px;
+	border:4px solid silver;
 	border-radius:8px;
 }
 main ul li img:hover{

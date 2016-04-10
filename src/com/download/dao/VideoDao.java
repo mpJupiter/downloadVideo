@@ -15,32 +15,38 @@ import com.download.model.Video;
 @Service @Transactional
 public class VideoDao {
       @Resource SessionFactory factory;
+      //增
       public void addVideo(Video video) throws Exception{
     	  Session s=factory.getCurrentSession();
     	  s.save(video);
       }
-      public void deleteVideo(String vnum)throws Exception{
+      //删
+      public void deleteVideo(Integer integer)throws Exception{
     	  Session s=factory.getCurrentSession();
-    	  Object video=s.load(Video.class, vnum);
+    	  Object video=s.load(Video.class,integer);
     	  s.delete(video);
       }
+      //改
       public void updateVideo(Video video) throws Exception{
     	  Session s=factory.getCurrentSession();
     	  s.update(video);
       }
-      public ArrayList<Video> QueryAllVideo(){
+      //查所有的video
+      public ArrayList<Video> QueryAllVideoInfo(){
     	  Session s=factory.getCurrentSession();
     	  String hql="From Video";
     	  Query q=s.createQuery(hql);
     	  List videoList=q.list();
     	  return(ArrayList<Video>) videoList;
       }
-      public Video GetVideoByNum(String vnum){
+      //根据主键查
+      public Video GetVideoById(Integer integer){
     	  Session s=factory.getCurrentSession();
-    	  Video video=(Video)s.get(Video.class, vnum);
+    	  Video video=(Video)s.get(Video.class, integer);
     	  return video;
       }
-      public ArrayList<Video> QueryVideo(String videoName){
+      //根据查询条件查
+      public ArrayList<Video> QueryVideoInfo(String videoName){
     	  Session s=factory.getCurrentSession();
     	  String hql="From Video video where 1=1";
     	  if(!videoName.equals("")) hql=hql+"and video.videoName like '%"+videoName+"%'";
@@ -48,4 +54,6 @@ public class VideoDao {
     	  List videoList=q.list();
     	  return(ArrayList<Video>) videoList;
       }
+      
+     
 }

@@ -35,7 +35,7 @@ public class VideoTypeAction extends ActionSupport{
 		return "delete_message";
 	}
 	public String showEdit() throws Exception{
-		videotype = videoTypeDao.GetVideotypeByNum(videotype.getVideoTypeName());
+		videotype = videoTypeDao.GetVideotypeByVideoTypeId(videotype.getVideoTypeId());
 		return "edit_view";
 	}
 	

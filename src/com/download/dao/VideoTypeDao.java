@@ -19,9 +19,9 @@ public class VideoTypeDao {
     	  Session s=factory.getCurrentSession();
     	  s.save(videotype);
       }
-      public void deleteVideotype(String vnum)throws Exception{
+      public void deleteVideotype(String videoTypeId)throws Exception{
     	  Session s=factory.getCurrentSession();
-    	  Object videotype=s.load(Videotype.class, vnum);
+    	  Object videotype=s.load(Videotype.class, videoTypeId);
     	  s.delete(videotype);
       }
       public void updateVideotype(Videotype videotype) throws Exception{
@@ -35,7 +35,7 @@ public class VideoTypeDao {
     	  List videotypeList=q.list();
     	  return(ArrayList<Videotype>) videotypeList;
       }
-      public Videotype GetVideotypeByNum(String vnum){
+      public Videotype GetVideotypeByVideoTypeId(String vnum){
     	  Session s=factory.getCurrentSession();
     	  Videotype videotype=(Videotype)s.get(Videotype.class, vnum);
     	  return videotype;
