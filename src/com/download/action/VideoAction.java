@@ -43,24 +43,109 @@ public class VideoAction extends ActionSupport{
 	public void setVideoList(List<Video> videoList) {
 		this.videoList = videoList;
 	}
-	public File videoFile;
-	 public String videoFileFileName;
-	 public String videoFileContentType;
-	 public void setVideoFile(File videoFile) {
-			this.videoFile = videoFile;
+	public File videoPhoto;
+	 public String videoFhotoFileName;
+	 public String videoPhotoContentType;
+	 public void setVideoFile(File videoPhoto) {
+			this.videoPhoto = videoPhoto;
 		}
 		public String getVideoFileFileName() {
-			return videoFileFileName;
+			return videoFhotoFileName;
 		}
-		public void setVideoFileFileName(String videoFileFileName) {
-			this.videoFileFileName = videoFileFileName;
+		public void setVideoFileFileName(String videoFhotoFileName) {
+			this.videoFhotoFileName = videoFhotoFileName;
 		}
 		public String getVideoFileContentType() {
-			return videoFileContentType;
+			return videoPhotoContentType;
 		}
-		public void setVideoFileContentType(String videoFileContentType) {
-			this.videoFileContentType = videoFileContentType;
+		public void setVideoFileContentType(String videoPhotoContentType) {
+			this.videoPhotoContentType = videoPhotoContentType;
 		}
+	public String addVideo() throws Exception{
+		String path=ServletActionContext.getServletContext().getRealPath("/upload");
+		String videoPhotoFileName="";
+		if(videoPhoto!=null){
+			InputStream is=new FileInputStream(videoPhoto);
+			String fileContentType=this.getVideoFileContentType();
+			System.out.println(fileContentType);
+			if(fileContentType.equals("image/jpeg")||fileContentType.equals("image/pjepg"))
+				 videoPhotoFileName=UUID.randomUUID().toString()+".jpg";
+			else if(fileContentType.equals("image/gif"))
+				videoPhotoFileName=UUID.randomUUID().toString()+".gif";
+			else if(fileContentType.equals("image/png"))
+				videoPhotoFileName=UUID.randomUUID().toString()+".png";
+			File file=new File(path,videoPhotoFileName);
+			OutputStream os=new FileOutputStream(file);
+			byte[] b=new byte[1024];
+			int bs=0;
+			while((bs=is.read(b))>0){
+				os.write(b, 0, bs);
+			}
+			is.close();
+			os.close();
+		}
+		if(videoPhoto!=null)
+			video.setPath("upload/"+videoPhotoFileName);
+		
+		else
+			video.setPath("upload/NoImage.jpg");
+		videoDao.addVideo(video);
+		return "message";
+	}
+	
+	public String showVideo(){
+		videoList=videoDao.QueryAllVideoInfo();
+		return "show_view";
+	}
+	public String showDetail(){
+		video = videoDao.GetVideoById(video.getVideoId());
+		return "detail_view";
+	}
+	
+	public String showEdit() throws Exception{
+		video = videoDao.GetVideoById(video.getVideoId());
+		return "edit_view";
+	}
+	
+	public String editVideo() throws Exception{
+		String path = ServletActionContext.getServletContext().getRealPath("/upload"); 
+        /*处理图片上传*/
+      String videoPhotoFileName = ""; 
+   	 	if(videoPhoto!= null) {
+   	 		InputStream is = new FileInputStream(videoPhoto);
+   			String fileContentType = this.getVideoFileContentType();
+   			System.out.println(fileContentType);
+   			if(fileContentType.equals("image/jpeg")  || fileContentType.equals("image/pjpeg"))
+   				videoPhotoFileName = UUID.randomUUID().toString() +  ".jpg";
+   			else if(fileContentType.equals("image/gif"))
+   				videoPhotoFileName = UUID.randomUUID().toString() +  ".gif";
+   			else if(fileContentType.equals("image/png"))
+   				videoPhotoFileName = UUID.randomUUID().toString() +  ".png";
+
+   			File file = new File(path, videoPhotoFileName);
+   			OutputStream os = new FileOutputStream(file);
+   			byte[] b = new byte[1024];
+   			int bs = 0;
+   			while ((bs = is.read(b)) > 0) {
+   				os.write(b, 0, bs);
+   			}
+   			is.close();
+   			os.close();
+   	 	}
+        if(videoPhoto != null)
+        	video.setPath("upload/" + videoPhotoFileName);
+        else
+        	video.setPath("upload/NoImage.jpg");
+		videoDao.updateVideo(video);
+		return "edit_message";
+	}
+	
+	
+	//删除video
+	public String deleteVideo() throws Exception{
+		videoDao.deleteVideo(video.getVideoId());
+		return "delete_message";
+	}
 	@SuppressWarnings("deprecation")
     public String AddPhoto() {
 		
@@ -79,8 +164,8 @@ public class VideoAction extends ActionSupport{
                 String path = ServletActionContext.getServletContext().getRealPath("/video"); 
                 /*处理上传*/
                 String videoFileName = ""; 
-           	 	if(videoFile != null) {
-           	 		InputStream is = new FileInputStream(videoFile);
+           	 	if(videoPhoto != null) {
+           	 		InputStream is = new FileInputStream(videoPhoto);
            			String fileContentType = this.getVideoFileContentType();
            			if(fileContentType.equals("video/flv"))
            				videoFileName = UUID.randomUUID().toString() +  ".jpg";
@@ -104,7 +189,7 @@ public class VideoAction extends ActionSupport{
            			is.close();
            			os.close();
            	 	}
-                if(videoFile != null)
+                if(videoPhoto != null)
                 	video.setPath("video/" + videoFileName);
                 else
                 	video.setPath("video/NoVideo.mp4");
@@ -117,37 +202,6 @@ public class VideoAction extends ActionSupport{
                 return "error";
             }
     }
-	
-	public String addVideo() throws Exception{
-		videoDao.addVideo(video);
-		return "message";
-	}
-	
-	public String showVideo(){
-		videoList=videoDao.QueryAllVideoInfo();
-		return "show_view";
-	}
-	public String showDetail(){
-		video = videoDao.GetVideoById(video.getVideoId());
-		return "detail_view";
-	}
-	
-	public String showEdit() throws Exception{
-		video = videoDao.GetVideoById(video.getVideoId());
-		return "edit_view";
-	}
-	
-	public String editVideo() throws Exception{
-		videoDao.updateVideo(video);
-		return "edit_message";
-	}
-	
-	
-	//删除video
-	public String deleteVideo() throws Exception{
-		videoDao.deleteVideo(video.getVideoId());
-		return "delete_message";
-	}
 	
 	private String keyWords;
 	public String getKeyWords() {
