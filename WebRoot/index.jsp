@@ -10,6 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     <base href="<%=basePath%>">
+    >
     
     <title>直接跳转到显示所有VIDEO的页面</title>
     <meta charset="utf-8">

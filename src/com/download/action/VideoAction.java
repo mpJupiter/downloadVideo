@@ -44,16 +44,16 @@ public class VideoAction extends ActionSupport{
 		this.videoList = videoList;
 	}
 	public File videoPhoto;
-	 public String videoFhotoFileName;
+	 public String videoPhotoFileName;
 	 public String videoPhotoContentType;
 	 public void setVideoFile(File videoPhoto) {
 			this.videoPhoto = videoPhoto;
 		}
 		public String getVideoFileFileName() {
-			return videoFhotoFileName;
+			return videoPhotoFileName;
 		}
-		public void setVideoFileFileName(String videoFhotoFileName) {
-			this.videoFhotoFileName = videoFhotoFileName;
+		public void setVideoFileFileName(String videoPhotoFileName) {
+			this.videoPhotoFileName = videoPhotoFileName;
 		}
 		public String getVideoFileContentType() {
 			return videoPhotoContentType;
@@ -74,6 +74,7 @@ public class VideoAction extends ActionSupport{
 				videoPhotoFileName=UUID.randomUUID().toString()+".gif";
 			else if(fileContentType.equals("image/png"))
 				videoPhotoFileName=UUID.randomUUID().toString()+".png";
+			
 			File file=new File(path,videoPhotoFileName);
 			OutputStream os=new FileOutputStream(file);
 			byte[] b=new byte[1024];

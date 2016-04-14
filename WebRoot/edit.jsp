@@ -25,6 +25,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/main.css">
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/font-awesome.css"/>
+	
+	<script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+	<script src="js/bootstrap-fileupload.js"></script>
   </head>
   
   <body>
