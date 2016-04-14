@@ -45,9 +45,31 @@ public class VideoAction extends ActionSupport{
 	private File videoPhoto;
     private String videoPhotoFileName;
     private String videoPhotoContentType;
+    private File videoFile;
+    private String videoFileName;
+    private String videoFileContentType;
+    
     
     
 	
+	public File getVideoFile() {
+		return videoFile;
+	}
+	public void setVideoFile(File videoFile) {
+		this.videoFile = videoFile;
+	}
+	public String getVideoFileName() {
+		return videoFileName;
+	}
+	public void setVideoFileName(String videoFileName) {
+		this.videoFileName = videoFileName;
+	}
+	public String getVideoFileContentType() {
+		return videoFileContentType;
+	}
+	public void setVideoFileContentType(String videoFileContentType) {
+		this.videoFileContentType = videoFileContentType;
+	}
 	public File getVideoPhoto() {
 		return videoPhoto;
 	}
@@ -67,34 +89,12 @@ public class VideoAction extends ActionSupport{
 		this.videoPhotoContentType = videoPhotoContentType;
 	}
 	
-	public File getVideoPath() {
-		return videoPath;
-	}
-	public void setVideoPath(File videoPath) {
-		this.videoPath = videoPath;
-	}
-	public String getVideoPathFileName() {
-		return videoPathFileName;
-	}
-	public void setVideoPathFileName(String videoPathFileName) {
-		this.videoPathFileName = videoPathFileName;
-	}
-	public String getVideoPathContentType() {
-		return videoPathContentType;
-	}
-	public void setVideoPathContentType(String videoPathContentType) {
-		this.videoPathContentType = videoPathContentType;
-	}
-	private File videoPath;
-    private String videoPathFileName;
-    private String videoPathContentType;
 	
 	
 	
-	@SuppressWarnings("deprecation")
-    
+	
 	/*添加videophoto*/
-	public String addVideoPhoto() throws Exception{
+    public String addVideo() throws Exception{
 		String path = ServletActionContext.getServletContext().getRealPath("/upload"); 
         /*处理图片上传*/
         String videoPhotoFileName = ""; 
@@ -124,16 +124,45 @@ public class VideoAction extends ActionSupport{
         else
         	video.setPicture("upload/NoImage.jpg");
         
-		videoDao.addVideo(video);
+        String path1 = ServletActionContext.getServletContext().getRealPath("/video"); 
+        String videoFileName = ""; 
+   	 	if(videoFile!= null) {
+   	 		InputStream is = new FileInputStream(videoFile);
+   			String fileContentType = this.getVideoFileContentType();
+   			System.out.println(fileContentType);
+   			if(fileContentType.equals("video/x-avi"))
+   				videoFileName = UUID.randomUUID().toString() +  ".avi";
+   			else if(fileContentType.equals("video/x-mpeg"))
+   				videoFileName = UUID.randomUUID().toString() +  ".m1v";
+   			else if(fileContentType.equals("video/mpeg4"))
+   				videoFileName = UUID.randomUUID().toString() +  ".mp4";
+   			else if(fileContentType.equals("video/x-ms-wmv"))
+   				videoFileName = UUID.randomUUID().toString() +  ".wmv";
+   			else if(fileContentType.equals("video/x-matroska"))
+   				videoFileName = UUID.randomUUID().toString() +  ".mkv";
+   			
+   			
+   			File file = new File(path1, videoFileName);
+   			OutputStream os1 = new FileOutputStream(file);
+   			byte[] b = new byte[1024];
+   			int bs = 0;
+   			while ((bs = is.read(b)) > 0) {
+   				os1.write(b, 0, bs);
+   			}
+   			is.close();
+   			os1.close();
+   	 	}
+        if(videoFile != null)
+        	video.setPath("video/" + videoFileName);
+        else
+        	video.setPath("upload/NoImage.jpg");
+        
+        videoDao.addVideo(video);
 		return "message";
 		
 	}
 
 	
-	public String addVideo() throws Exception{
-		videoDao.addVideo(video);
-		return "message";
-	}
 	
 	public String showVideo(){
 		videoList=videoDao.QueryAllVideoInfo();
@@ -152,190 +181,6 @@ public class VideoAction extends ActionSupport{
 	public String editVideo() throws Exception{
 		videoDao.updateVideo(video);
 		return "edit_message";
-	}
-	
-	//添加路径
-	
-	public class addVideo extends ActionSupport
-	{
-	    private String videoName;
-	    private String introduction;
-	    private String videoType;
-	    private String directorString;
-	    private String publishData;
-	    private String cast;
-	    private File picture;
-	    private String  pictureFileName;
-	    private String pictureContentType;
-	    private File path;
-	    private String pathFileName;
-	    private String pathContentType;
-	    public String getVideoName() {
-			return videoName;
-		}
-
-		public void setVideoName(String videoName) {
-			this.videoName = videoName;
-		}
-
-		public String getIntroduction() {
-			return introduction;
-		}
-
-		public void setIntroduction(String introduction) {
-			this.introduction = introduction;
-		}
-
-		public String getVideoType() {
-			return videoType;
-		}
-
-		public void setVideoType(String videoType) {
-			this.videoType = videoType;
-		}
-
-		public String getDirectorString() {
-			return directorString;
-		}
-
-		public void setDirectorString(String directorString) {
-			this.directorString = directorString;
-		}
-
-		public String getPublishData() {
-			return publishData;
-		}
-
-		public void setPublishData(String publishData) {
-			this.publishData = publishData;
-		}
-
-		public String getCast() {
-			return cast;
-		}
-
-		public void setCast(String cast) {
-			this.cast = cast;
-		}
-
-		public File getPicture() {
-			return picture;
-		}
-
-		public void setPicture(File picture) {
-			this.picture = picture;
-		}
-
-		public String getPictureFileName() {
-			return pictureFileName;
-		}
-
-		public void setPictureFileName(String pictureFileName) {
-			this.pictureFileName = pictureFileName;
-		}
-
-		public String getPictureContentType() {
-			return pictureContentType;
-		}
-
-		public void setPictureContentType(String pictureContentType) {
-			this.pictureContentType = pictureContentType;
-		}
-
-		public File getPath() {
-			return path;
-		}
-
-		public void setPath(File path) {
-			this.path = path;
-		}
-
-		public String getPathFileName() {
-			return pathFileName;
-		}
-
-		public void setPathFileName(String pathFileName) {
-			this.pathFileName = pathFileName;
-		}
-
-		public String getPathContentType() {
-			return pathContentType;
-		}
-
-		public void setPathContentType(String pathContentType) {
-			this.pathContentType = pathContentType;
-		}
-
-		//注意，file并不是指前端jsp上传过来的文件本身，而是文件上传过来存放在临时文件夹下面的文件
-	    private File file;
-	    
-	    //提交过来的file的名字
-	    private String fileFileName;
-	    
-	    //提交过来的file的MIME类型
-	    private String fileContentType;
-
-
-	    public File getFile()
-	    {
-	        return file;
-	    }
-
-	    public void setFile(File file)
-	    {
-	        this.file = file;
-	    }
-
-	    public String getFileFileName()
-	    {
-	        return fileFileName;
-	    }
-
-	    public void setFileFileName(String fileFileName)
-	    {
-	        this.fileFileName = fileFileName;
-	    }
-
-	    public String getFileContentType()
-	    {
-	        return fileContentType;
-	    }
-
-	    public void setFileContentType(String fileContentType)
-	    {
-	        this.fileContentType = fileContentType;
-	    }
-	    
-	    @Override
-	    public String execute() throws Exception
-	    {
-	        String root = ServletActionContext.getServletContext().getRealPath("/upload");
-	        
-	        InputStream is = new FileInputStream(file);
-	        
-	        OutputStream os = new FileOutputStream(new File(root, fileFileName));
-	        
-	        System.out.println("fileFileName: " + fileFileName);
-
-	        // 因为file是存放在临时文件夹的文件，我们可以将其文件名和文件路径打印出来，看和之前的fileFileName是否相同
-	        System.out.println("file: " + file.getName());
-	        System.out.println("file: " + file.getPath());
-	        
-	        byte[] buffer = new byte[500];
-	        int length = 0;
-	        
-	        while(-1 != (length = is.read(buffer, 0, buffer.length)))
-	        {
-	            os.write(buffer);
-	        }
-	        
-	        os.close();
-	        is.close();
-	        
-	        videoDao.addVideo(video);
-			return "message";
-			
-	    }
 	}
 	
 	//删除video

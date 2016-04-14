@@ -57,7 +57,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      <main class="container-fluid">
 	    <div class="row">
 		   <div class="col-md-10">               <!--让表单中的元素在同一行排着 -->
-		     <s:form action="video/video_addVideo" cssClass="form-horizontal" enctype="multipart/form-data"><!-- 这种是用来提交文件的 -->
+		    <s:form action="video/video_addVideo" cssClass="form-horizontal" enctype="multipart/form-data">
 		         <div class="panel panel-success">
 			       <div class="panel-heading"><!-- 头部用来放标题 -->
 		               <h4 class="panel-title"> <i class="fa fa-youtube-play"></i> 添加视频</h4>
@@ -126,7 +126,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 </div>
                                 <div>
                                    <span class="btn btn-file btn-primary"><span class="fileupload-new">浏览</span>
-                                   <span class="fileupload-exists">浏览</span><input type="file" name="videoPath"/></span><!--input type="file" 就可以上传  name="foodPhoto"这个文件域的名字-->
+                                   <span class="fileupload-exists">浏览</span><input type="file" name="videoFile"/></span><!--input type="file" 就可以上传  name="foodPhoto"这个文件域的名字-->
                                 <a href="#" class="btn btn-danger fileupload-exists" data-dismiss="fileupload">取消</a>
                                 </div>
                               </div>

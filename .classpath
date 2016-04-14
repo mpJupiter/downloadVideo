@@ -30,7 +30,6 @@
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jta-1.1.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/log4j-1.2.15.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/mysql-connector-java-3.1.13-bin.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/mysql-connector-java-5.1.26-bin.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/ognl-2.7.3.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/poi-3.0.2-FINAL-20080204.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/slf4j-api-1.5.2.jar"/>

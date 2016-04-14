@@ -40,8 +40,8 @@
      
 	 <package name="video" namespace="/video" extends="default">
 	        <action name="video_*" class="videoAction" method="{1}">
-	        	<result name="message">/message.jsp</result>
-	        	<result name="show_view">/main.jsp</result>
+	        	 <result name="message">/message.jsp</result>
+	        	 <result name="show_view">/main.jsp</result>
 	        	<result name="detail_view">/detail.jsp</result>
 	        	<result name="edit_view">/edit.jsp</result>
 	        	<result name="delete_message">/delete_message.jsp</result>
