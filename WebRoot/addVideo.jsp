@@ -33,7 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
   <header>
-       <div class="logo"><i class="fa fa-youtube-play"></i>DownloadVideo</div>
+       <div class="logo"><i class="fa fa-youtube-play"></i>Download</div>
        <div class="account">
           <c:choose>
           <c:when test="${customer.customerName==null}">
