@@ -29,7 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     <header>
-       <div class="logo"><i class="fa fa-youtube-play"></i> DownloadV</div>	    
+       <div class="logo"><i class="fa fa-youtube-play"></i> Download</div>	    
     </header>  
     <main class="bg">
     
