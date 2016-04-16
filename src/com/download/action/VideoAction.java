@@ -8,7 +8,12 @@ import java.io.OutputStream;
 import java.util.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.*;
 
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.ProgressListener;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -28,6 +33,13 @@ public class VideoAction extends ActionSupport{
 	@Resource VideoTypeDao videoTypeDao;
 	private Video video;
 	private static final long serialVersionUID = 1L;
+	public File videoPhoto;
+	 public String videoPhotoFileName;
+	 public String videoPhotoContentType;
+	 
+    public File videoFile;
+	public String videoFileName;
+	public String videoFileContentType;
 	
 	public Video getVideo() {
 		return video;
@@ -43,9 +55,7 @@ public class VideoAction extends ActionSupport{
 	public void setVideoList(List<Video> videoList) {
 		this.videoList = videoList;
 	}
-	public File videoPhoto;
-	 public String videoPhotoFileName;
-	 public String videoPhotoContentType;
+
 	 public void setVideoFile(File videoPhoto) {
 			this.videoPhoto = videoPhoto;
 		}
@@ -62,6 +72,7 @@ public class VideoAction extends ActionSupport{
 			this.videoPhotoContentType = videoPhotoContentType;
 		}
 	public String addVideo() throws Exception{
+		 ActionContext ctx = ActionContext.getContext();
 		String path=ServletActionContext.getServletContext().getRealPath("/upload");
 		String videoPhotoFileName="";
 		if(videoPhoto!=null){
@@ -90,9 +101,38 @@ public class VideoAction extends ActionSupport{
 		
 		else
 			video.setPath("upload/NoImage.jpg");
+		
+		
+		String video_path=ServletActionContext.getServletContext().getRealPath("/videos");
+		String videoFileName="";
+		if(videoFile!=null){
+			InputStream is=new FileInputStream(videoFile);
+			String videofileContentType=this.getVideoFileContentType();
+			System.out.println(videofileContentType);
+			if(videofileContentType.equals("video/flv"))
+   				videoFileName = UUID.randomUUID().toString() +  ".jpg";
+   			else if(videofileContentType.equals("video/rmvb"))
+   				videoFileName = UUID.randomUUID().toString() +  ".rmvb";
+   			else if(videofileContentType.equals("video/mkv"))
+   				videoFileName = UUID.randomUUID().toString() +  ".mkv";
+   			else if(videofileContentType.equals("video/mp4"))
+   				videoFileName = UUID.randomUUID().toString() +  ".mp4";
+			File video_file=new File(video_path,videoFileName);
+			OutputStream os=new FileOutputStream(video_file);
+			byte[] b=new byte[1024];
+			int bs=0;
+			while((bs=is.read(b))>0){
+				os.write(b, 0, bs);
+			}
+			is.close();
+			os.close();
+		}
+		if(videoFile!=null)
+			video.setPath("upload/"+videoFileName);
+		 
 		videoDao.addVideo(video);
 		return "message";
-	}
+		}
 	
 	public String showVideo(){
 		videoList=videoDao.QueryAllVideoInfo();
@@ -224,6 +264,15 @@ public class VideoAction extends ActionSupport{
 	}
 	public void setVideoType(Videotype videoType) {
 		this.videoType = videoType;
+	}
+	public String getVideoFileName() {
+		return videoFileName;
+	}
+	public void setVideoFileName(String videoFileName) {
+		this.videoFileName = videoFileName;
+	}
+	public File getVideoFile() {
+		return videoFile;
 	}
 	
 }
