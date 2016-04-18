@@ -104,13 +104,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		 					<a href="video/video_showDetail?video.videoId=<s:property value='videoId'/>">
                 				<s:property value="videoName"/>
               				</a>
-		 				<!-- <a href="download/download_addDownload?video.videoId=<s:property value='videoId'/>&customer.customerName=<s:property value='#session.customer.customerName'/>" class="add-download">
+		 				<a href="download/download_addDownload?video.videoId=<s:property value='videoId'/>&customer.customerName=<s:property value='#session.customer.customerName'/>" class="add-download">
+		 						<i class="fa fa-download"></i>下载
+		 					</a>
+		 					<!-- <a href="<%=basePath%><s:property value='path'/>"class="add-download">
 		 						<i class="fa fa-download"></i>
 		 					</a>
 		 					 -->
-		 					<a href="<%=basePath%><s:property value='path'/>">
-		 						<i class="fa fa-download"></i>
-		 					</a>
 		 				</p>
 		 			</li>
 		 		</s:iterator>
