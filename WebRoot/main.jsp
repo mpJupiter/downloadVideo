@@ -75,9 +75,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			
 		 <ul>
 	      <s:if test="#session.customer.customerName =='admin'">			
-				<li>
-					<div class="add"><a href="addVideo.jsp"><i class="fa fa-plus"></i>添加影片</a></div>
-				</li>	
+				<li>		        
+		            <div class="add"><a href="addVideo.jsp"><i class="fa fa-plus"></i> 添加影片</a></div>
+		              <p>点击上面的链接可以添加一部影片</p>		        
+	        </li>
+	
 	        	<s:iterator value="videoList" status="status">
 					<li>
             			<img src="<%=basePath%><s:property value='picture'/>">
