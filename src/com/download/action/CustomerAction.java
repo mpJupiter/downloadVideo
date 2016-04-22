@@ -8,7 +8,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts2.interceptor.SessionAware;  
-import org.aspectj.weaver.patterns.ThisOrTargetAnnotationPointcut;
+//import org.aspectj.weaver.patterns.ThisOrTargetAnnotationPointcut;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
