@@ -14,12 +14,9 @@ a:hover {
 	color: grey;
 	text-decoration:none;
 }
-.container{
-	padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-top:100px;
-    margin-left: auto;
+
+.navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand img{
+	width:20px;
 }
 header{
 	background:#31a8e6;
@@ -28,21 +25,25 @@ header{
 header .logo{
 	float:left;
 	line-height:60px;
-	font-size:28px;
+	font-size:26px;
 	color:white;
 }
-nav{
+header .logo a{
+	color:white;	
+}
+
+/*nav{
 	float:left;
 	margin:20px auto auto 20px;
 	
-}
-nav ul{
+}*/
+/*nav ul{
 	list-style:none;
-}
-nav ul li{
+}*/
+/*nav ul li{
 	display:inline-block;
 	margin:0 20px;
-}
+}*/
 header{
 	background:#31a8e6;
 	height:60px;
@@ -51,7 +52,7 @@ header .account{
 	padding-right:200px;
 	text-align:right;
 
-	/*line-height: 40px;*/
+	line-height: 60px;
 	color:white;
 	height:40px;
 	/*background:#31a8e6;*/

@@ -28,6 +28,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
 	<header>
 	    <div class="logo"><i class="fa fa-youtube-play"></i><a href="index.jsp">DownLoadV</a></div>
+<!-- 	    
 	    <nav>
 			<ul>
 				<li class="active"><a href="index.jsp">首页</a></li>
@@ -36,30 +37,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<li class=""><a href="index.jsp">节目</a></li>
 			</ul>
 		</nav>
-	    <div class="account">
-    		<c:choose>
-    			<c:when test="${customer.customerName==null}">
-    				<a href="login.jsp">登录</a>
-    				<a href="reg.jsp">用户注册</a>
-    			</c:when>
-    			<c:otherwise>
-    				<c:out value="${customer.customerName}"></c:out>，欢迎您！
-    			</c:otherwise>
-    		</c:choose>
-    	</div>
-	</header>
-		
-	<main>	
-		<s:form action = "video/video_queryVideo" method = "post">
-			<div class="form-inline search-box">
-              <div class="form-group pull-right mr200">
-                <input class="search-field form-control input-sm" title="关键词" name="keyWords" placeholder="输入关键词...">
-                <button class="btn btn-info btn-sm" type="submit">搜  索</button>
-              </div> 
-            </div>
-
-			<div class="containered">
-					<div style="float: right; position: relative; top: 0px; height: 40px;">
+	 -->
+	 <div class="containered">
+					<div style="float: left;margin-left:500px; position: relative; top:20px; height: 40px;">
 						<div class="bdsharebuttonbox">
 							<a href="#" class="bds_more" data-cmd="more"></a>
 							<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
@@ -72,7 +52,72 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</script>
 					</div>
 			</div>
+	    <div class="account">
+    		<c:choose>
+    			<c:when test="${customer.customerName==null}">
+    				<a href="login.jsp">登录</a>
+    				<a href="reg.jsp">用户注册</a>
+    			</c:when>
+    			<c:otherwise>
+    				<c:out value="${customer.customerName}"></c:out>，欢迎您！
+    			</c:otherwise>
+    		</c:choose>
+    	</div>
+	</header>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+     <!-- <a class="navbar-brand" href="#">Brand</a> -->
+      <a class="navbar-brand" href="#">
+        <img alt="Brand" src="images/logo.png">
+      </a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">首页 <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">电影</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">类型 <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form class="navbar-form navbar-left" action = "video/video_queryVideo" method = "post" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" title="关键词" name="keyWords" placeholder="输入关键词...">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">电视剧</a></li>
+        <li><a href="#">节目</a></li>
+        
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+  
 			
+</nav>
+	<main>	
+		
+		<s:form action = "video/video_queryVideo" method = "post">			
 		 <ul>
 	      <s:if test="#session.customer.customerName =='admin'">			
 				<li>
