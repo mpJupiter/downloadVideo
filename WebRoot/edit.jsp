@@ -68,37 +68,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				       <div class="form-group">
 			                <label class="control-label col-md-3">视频名称</label>
 			                <div class="col-md-4">
-                              <input type="text" name="video.videoName" class="form-control input-sm" required>
+                              <input type="text" name="video.videoName" value="<s:property value='video.videoName'/>" class="form-control input-sm" required>
                            </div>
 			           </div>  
 			           <div class="form-group">
 			                <label class="control-label col-md-3">视频简介</label>
 			                <div class="col-md-6">
-                              <input type="text" name="video.introduction" class="form-control input-sm" required>
+                              <input type="text" name="video.introduction" value="<s:property value='video.introduction'/>" class="form-control input-sm" required>
                             </div>
 			           </div>
 			           <div class="form-group">
 			                <label class="control-label col-md-3">视频类型</label>
 			                <div class="col-md-4">
-                              <input type="text" name="video.videoType" class="form-control input-sm" required>
+                              <input type="text" name="video.videoType" value="<s:property value='video.videoType'/>" class="form-control input-sm" required>
                            </div>
 			           </div>
 			           <div class="form-group">
 			                <label class="control-label col-md-3">导演</label>
 			                <div class="col-md-4">
-                              <input type="text" name="video.director" class="form-control input-sm" required>
+                              <input type="text" name="video.director" value="<s:property value='video.director'/>" class="form-control input-sm" required>
                            </div>
 			           </div>
 			           <div class="form-group">
 			                <label class="control-label col-md-3">发行日期</label>
 			                <div class="col-md-4">
-                              <input type="text" name="video.publishData" class="form-control input-sm" required>
+                              <input type="text" name="video.publishData" value="<s:property value='video.publishData'/>" class="form-control input-sm" required>
                            </div>
 			           </div>
 			           <div class="form-group">
 			                <label class="control-label col-md-3">演员表</label>
 			                <div class="col-md-4">
-                              <input type="text" name="video.cast" class="form-control input-sm" required>
+                              <input type="text" name="video.cast" value="<s:property value='video.cast'/>" class="form-control input-sm" required>
                            </div>
 			           </div>
 			           <div class="form-group">
