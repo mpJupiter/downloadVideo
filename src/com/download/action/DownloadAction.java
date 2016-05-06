@@ -69,7 +69,6 @@ public class DownloadAction extends ActionSupport{
 		Download dld =new Download();
 		dld.setCustomer(customer);
 		dld.setVideo(video);
-		//因为是“来一份”，所以置为1
 		downloadDao.addDownload(dld);
 		return "download_message";
 		

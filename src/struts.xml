@@ -68,12 +68,12 @@
 	        	<result name="input">/login.jsp</result>
 	        </action>  
 	 </package>
-	 <package name="download" namespace="/download" extends="default">
-	 	<action name="download_*" class="downloadAction" method="{1}">
-	 		<result name="download_message">/download_message.jsp</result>
-	 		<result name="show_view">/download_main.jsp</result>
-	 		<result name="detail_view">/download_detail.jsp</result>
-	 	</action>
-	 	
+	 <package name="download" namespace="/download" extends="default" >
+        <action name="download_*" class="downloadAction" method="{1}">
+            <result name="download_message">/download_message.jsp</result>
+            <result name="show_view">/download_main.jsp</result>
+            <result name="detail_view">/download_detail.jsp</result>
+        </action>  
 	 </package>
+	 
 </struts>

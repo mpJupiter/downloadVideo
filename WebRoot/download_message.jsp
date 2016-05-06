@@ -9,21 +9,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'delete_message.jsp' starting page</title>
+    <title>下单成功.</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	 <link rel="stylesheet" type="text/css" href="<%=basePath%>css/main.css">
-	 <link rel="shortcut icon" href="<%=basePath%>image/logo.png"/>
-	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/font-awesome.css">
-	
+	<meta http-equiv="Refresh" content="0;url=download/download_showDownload?customer.customerName=${customer.customerName}"/>
+	<!--
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	-->
+	<link rel="shortcut icon" href="<%=basePath%>image/logo.png"/>
+<link rel="stylesheet" type="text/css" href="<%=basePath%>css/font-awesome.css">
 
   </head>
   
   <body>
-    删除成功<br>
+    下单成功<br>
   </body>
 </html>
