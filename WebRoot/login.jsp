@@ -33,7 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </header>  
     <main class="bg">
     
-	    <s:form action="customer/customer_login" method="post" cssClass="login">
+	   <s:form action="customer/customer_login" method="post" cssClass="login">
 	      <h3>请您登录</h3>
 	      <div class="form-group">
               <div class="input-group">
