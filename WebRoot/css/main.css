@@ -360,18 +360,6 @@ main table td{
 }
 
 
-/*详情页面*/
-.de{
-    width:100%;
-	height:600px;
-	background-image:url('../images/bg.png');	
-	background-repeat:no-repeat;
-	padding-top:30px;
- 
-}
-.de.detail{
-	
-}
 
 
 /*修改信息页面*/

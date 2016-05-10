@@ -68,7 +68,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 	</div>
 			
-     
+     <!--例如：马苹修改，改变了详情页面的显示效果 -->
     <main class="container-fluid">
 	    <div class="row">
 		   <div class="col-md-10">               <!--让表单中的元素在同一行排着 -->
