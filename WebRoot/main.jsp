@@ -52,15 +52,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</header>
 		
 	<main>
-	 <div class="menu-box">
-        <ul class="w">
-            <li><a href="/">首页</a></li>
-            <li channel="subtitle"><a href="/subtitle">电影</a></li>
-            <li channel="news"><a href="/news">连续剧</a></li>
-            <li channel="resource"><a href="/resourcelist">综艺节目</a></li>
-         </ul>
-     </div>	
-     
+
+	    <nav>
+			<ul>
+				<li class="active"><a href="index.jsp">首页</a></li>
+				<li class=""><a href="index.jsp">电影</a></li>
+				<li class=""><a href="index.jsp">电视剧</a></li>
+				<li class=""><a href="index.jsp">节目</a></li>
+			</ul>
+		</nav>
 		<s:form action = "video/video_queryVideo" method = "post">
 			<div class="form-inline search-box">
               <div class="form-group pull-right mr200">

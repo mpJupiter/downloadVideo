@@ -155,7 +155,7 @@ public class VideoAction extends ActionSupport{
         if(videoFile != null)
         	video.setPath("video/" + videoFileName);
         else
-        	video.setPath("upload/NoImage.jpg");
+        	video.setPath("images.jpg");
         
         videoDao.addVideo(video);
 		return "message";

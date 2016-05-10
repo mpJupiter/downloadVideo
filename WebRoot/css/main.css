@@ -14,20 +14,8 @@ a:hover {
 	color: #b00;
 	text-decoration:none;
 }
-<!--
-nav{
-	float:left;
-	margin:auto auto auto 20px;
-	
-}
-nav ul{
-	list-style:none;
-}
-nav ul li{
-	display:inline-block;
-	margin:0 10px;
-}
--->
+
+
 header{
 
     background:#31a8e6;
@@ -58,10 +46,23 @@ header .logo{
 	color:white;
 }
 
+nav{
+	float:left;
+	margin:auto auto auto 40px;
+	
+}
+nav ul{
+	list-style:none;
+}
+nav ul li{
+	display:inline-block;
+	margin:0 30px;
+	font-size:25px;
+	color:#CD00CD;
+}
 main{
 	margin-top:10px;
 }
-
 
 main .search-go{
 	float:right;
@@ -357,6 +358,21 @@ main table td{
 .bg.register.btn.button{
 	margin:0 30px;
 }
+
+
+/*详情页面*/
+.de{
+    width:100%;
+	height:600px;
+	background-image:url('../images/bg.png');	
+	background-repeat:no-repeat;
+	padding-top:30px;
+ 
+}
+.de.detail{
+	
+}
+
 
 /*修改信息页面*/
 /* 文件上传*/
