@@ -24,7 +24,6 @@ import com.download.dao.VideoTypeDao;
 import com.download.model.Customer;
 import com.download.model.Video;
 import com.download.model.Videotype;
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 @Controller @Scope("prototype")

@@ -6,7 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-
+import com.download.dao.VideoTypeDao;
 import com.download.dao.CustomerDao;
 import com.download.dao.VideoDao;
 import com.download.dao.VideoTypeDao;
@@ -18,6 +18,10 @@ import com.opensymphony.xwork2.ActionSupport;
 
 @Controller @Scope("prototype")
 public class VideoTypeAction extends ActionSupport{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Resource VideoTypeDao videoTypeDao;
 
 	private Videotype videoType;
