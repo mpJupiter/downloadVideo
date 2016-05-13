@@ -26,7 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>	
 	 <header>
-       <div class="logo"><i class="fa fa-youtube-play"></i> DownloadVideo</div>	  <!-- 验证注册信息 -->  
+       <div class="logo"><i class="fa fa-youtube-play"></i> Download</div>	  <!-- 验证注册信息 -->  
     </header>  
     <main class="bg">
     
