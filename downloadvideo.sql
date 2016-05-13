@@ -29,7 +29,11 @@ CREATE TABLE `t_customer` (
 
 /*Data for the table `t_customer` */
 
+<<<<<<< HEAD
 insert  into `t_customer`(`customerId`,`customerName`,`password`) values (1,'admin','123'),(2,'essfree','essfree'),(3,'essfree','badwolf');
+=======
+insert  into `t_customer`(`customerId`,`customerName`,`password`) values (1,'admin','123'),(2,'essfree','essfree');
+>>>>>>> cbb679cb2bc27312907bcfaff35770d65be21053
 
 /*Table structure for table `t_download` */
 
@@ -46,12 +50,19 @@ CREATE TABLE `t_download` (
   CONSTRAINT `FKBC73BF3619701BA` FOREIGN KEY (`customer`) REFERENCES `t_customer` (`customerId`),
   CONSTRAINT `t_download_ibfk_1` FOREIGN KEY (`video`) REFERENCES `t_video` (`videoId`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `t_download_ibfk_2` FOREIGN KEY (`customer`) REFERENCES `t_customer` (`customerId`) ON DELETE CASCADE ON UPDATE CASCADE
+<<<<<<< HEAD
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 /*Data for the table `t_download` */
 
 insert  into `t_download`(`downloadId`,`video`,`customer`) values (1,2,2),(2,2,2),(3,2,2),(4,2,2),(5,2,2),(6,2,2),(7,2,2),(8,2,2),(9,3,2),(10,2,2),(11,2,2),(12,3,2),(13,4,2);
 
+=======
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `t_download` */
+
+>>>>>>> cbb679cb2bc27312907bcfaff35770d65be21053
 /*Table structure for table `t_video` */
 
 DROP TABLE IF EXISTS `t_video`;

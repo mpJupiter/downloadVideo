@@ -22,6 +22,7 @@ public class DownloadAction extends ActionSupport{
 	 */
 	private static final long serialVersionUID = 1L;
 	/*业务层对象*/
+	 /*业务层对象*/
     @Resource VideoDao videoDao;
     @Resource CustomerDao customerDao;
     @Resource DownloadDao downloadDao;
