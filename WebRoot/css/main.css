@@ -14,32 +14,15 @@ a:hover {
 	color: #b00;
 	text-decoration:none;
 }
-
-.navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand img{
-	width:20px;
-}
-header{
-	background:#31a8e6;
-	height:60px;
-}
-header .logo{
-	float:left;
-	line-height:60px;
-	font-size:26px;
-	color:white;
-}
-header .logo a{
-	color:white;	
-}
 header{
 
-    background:#31a8e6;
-	height:60px;
+    background: #80FFFF;
+	height:70px;
 }
 header .account{
 	padding-right:200px;
 	text-align:right;
-	color:white;
+	color:black;
 	line-height:70px;
 	
 }
@@ -47,75 +30,63 @@ header .account>a{
 	float:right;
 	padding-right:20px;
 	line-height: 40px;
-	color:white;
+	color:black;
 	line-height:70px;
 	
 }
 header .account>a:hover{
+	
 	color:#eee;
+
+	
 }
 header .logo{
     float:left;
 	line-height:60px;
 	font-size:28px;
-	color:white;
+	color:pink;
 }
 
-main h3{
-	text-align:center;
-}
-/*
-main .search-go{
-	float:right;
-	margin-right:200px;
-	padding:4px 15px;
-	font-family:"Microsoft Yahei",微软雅黑,"Helvetica Neue",Arial,sans-serif;
-	border:1px solid white;
-	border-radius:3px;
-	font-size:14px;
-	color:white;
-	background:#31a8e6;
-	
+main{
+	margin-top:10px;
 }
 
-main .search-go:hover{
-	background:#3190e6;	
+
+main .search-box{
+	height:30px;
 }
-main .search{
-	float:right;
-	margin-right:20px;
-	border:2px solid #31a8e6;
-	border-radius:5px;
-	font-size:14px;
-	height:24px;
-	width:200px;
+
+main .input-group{
+	margin:20px 30px;
 }
-*/
 main ul{
 	width:1040px;
 	margin:0 auto;
-	padding-left:0；
-	list-style:none;
+	padding-left: 0;
+	list-style: none;
+	
 }
 main ul li{
+
 	display:inline-block;
-	
 }
 main ul li .add{
-    float:left;  
+	
+    float:left;
 	margin:30px 20px 0px 20px;
 	padding:5px;
-	width:200px;
-	height:200px;
-	border:4px solid silver;
-	border-radius:8px;
-	text-align:center;
+	width:300px;
+	height:250px;
+	border:4px solid #80FFFF;
+	border-radius:800px;
+	text-align:center;	
 }
-	
+
 main ul li .add >a{
-	font-size:30px;
-	color:#31a8e6;
-	line-height:170px;
+
+	font-size:36px;
+	color:#80FFFF;
+	line-height:230px;
 }
 main ul li .add:hover{
 	border:4px solid gray;
@@ -123,9 +94,9 @@ main ul li .add:hover{
 main ul li img{
 	margin:30px 20px 0px 20px;
 	padding:5px;
-	width:200px;
-	height:200px;
-	border:4px solid silver;
+	width:300px;
+	height:250px;
+	border:4px solid #80FFFF;
 	border-radius:8px;
 }
 main ul li img:hover{
@@ -135,7 +106,9 @@ main ul li p{
 	text-align:center;
 	line-height:50px;
 }
-
+main ul li p span.price{
+	margin:0 20px;
+}
 main ul li p a.add-order{
 	padding:3px 12px;
 	border:2px solid #31a8e6;
@@ -147,33 +120,14 @@ main ul li p a.add-order:hover{
 	border:2px solid #3190e6;
 	color:#3190e6;
 }
-main table{
-	
-	margin:0 auto;
-	border:1px solid #31a8e6;
-	width:500px;
-	
-}
-main table th{
-	
-	height:50px;
-	
-}
-main table td{
-	
-	text-align:center;
-	height:40px;
-}
-
-
 
 /*登录页面*/
 .bg{
 	width:100%;
-	height:700px;
-	background-image:url('../images/bg.jpg');
+	height:600px;
+	background-image:url('../images/bg.png');
 	background-repeat:no-repeat;
-    -webkit-background-size:cover;/*适应不同浏览器*/
+    -webkit-background-size:cover;
     -moz-background-size:cover;
     padding-top:30px;
 
@@ -262,11 +216,7 @@ main table td{
 .bg .login .btn-login{
 	width:280px;
 }
-
-
-
-
-/*修改信息页面*/
+/*修改美食信息页面*/
 /* 文件上传*/
 .btn-file{overflow:hidden;position:relative;vertical-align:middle;}
 .btn-file>input{position:absolute;top:0;right:0;margin:0;opacity:0;filter:alpha(opacity=0);transform:translate(-300px, 0) scale(4);font-size:23px;direction:ltr;cursor:pointer;}
@@ -288,8 +238,31 @@ main table td{
 .control-group.success .fileupload .fileupload-preview{color:#468847;}
 .control-group.success .fileupload .thumbnail{border-color:#468847;}
 
+/*错误输出*/
 .fielderror{
 	margin-left:30px;
 	color:red;
 	font-size:1em;
 }
+main h3{
+	text-align:center;
+}
+
+main table{
+	
+	margin:0 auto;
+	border:1px solid #31a8e6;
+	width:500px;
+	
+}
+main table th{
+	
+	height:50px;
+	
+}
+main table td{
+	
+	text-align:center;
+	height:40px;
+}
+

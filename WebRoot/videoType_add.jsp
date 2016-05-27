@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     <base href="<%=basePath%>">
-    
+   
     <title>My JSP 'videoType_add.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
