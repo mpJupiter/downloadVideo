@@ -53,7 +53,8 @@ public class CustomerAction extends ActionSupport implements SessionAware{
 	}
 	
 	
-	public String reg() throws Exception{
+	public String reg() throws Exception
+	{
 		customerDao.addCustomer(customer);
 		session.put("customer", customer);
 		return "show_view";
@@ -79,19 +80,26 @@ public class CustomerAction extends ActionSupport implements SessionAware{
 	}
 	
 	
-	public String login(){
+	public String login()
+	{
 		ArrayList<Customer> listCustomers = customerDao.QueryCustomer(customer.getCustomerName());
-		if(listCustomers.size()==0){
+		if(listCustomers.size()==0)
+		{
 			this.errMessage="账号不存在";
 			System.out.println(this.errMessage);
 			return "input";
-		}else{
+		}
+		else
+		{
 			Customer db_customerCustomer = listCustomers.get(0);
-			if(!db_customerCustomer.getPassword().equals(customer.getPassword())){
+			if(!db_customerCustomer.getPassword().equals(customer.getPassword()))
+			{
 				this.errMessage="密码不正确";
 				System.out.println(this.errMessage);
 				return "input";
-			}else{
+			}
+			else
+			{
 				session.put("customer", db_customerCustomer);
 				return "success";
 			}

@@ -110,29 +110,24 @@ public class LoginInterceptors extends AbstractInterceptor{
 
 	   }
 
-	   public String getExcludeName() {
-
+	   public String getExcludeName() 
+	   {
 	     return excludeName;
-
 	   }
 
-	   public void setExcludeName(String excludeName) {
-
+	   public void setExcludeName(String excludeName) 
+	   {
 	     this.excludeName = excludeName;
-
 	   }
 
-	   public List<String> getList() {
-
+	   public List<String> getList() 
+	   {
 	     return list;
-
 	   }
 
-	   public void setList(List<String> list) {
-
+	   public void setList(List<String> list) 
+	   {
 	     this.list = list;
-
 	   }
-
-
-	}
+	   
+}

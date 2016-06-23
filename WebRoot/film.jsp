@@ -22,13 +22,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/main.css">
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/font-awesome.css"/>
 	<link rel="shortcut icon" href="<%=basePath%>images/logo.png"/>
+	
+	<script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+	<script src="js/bootstrap-fileupload.js"></script>
+	
   </head>
   
   <body>
   
 	<header>
 	    <div class="logo"><i class="fa fa-youtube-play"></i><a href="index.jsp">DownLoadV</a></div>
-	  
 	    <div class="account">
     		<c:choose>
     			<c:when test="${customer.customerName==null}">
@@ -49,7 +53,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<li class="active"><a href="index.jsp">首页</a></li>
 				<li class=""><a href="updaterecently.jsp">最近更新</a></li>
 				<li class=""><a href="film.jsp">电影</a></li>
-				<li class=""><a href="drama.jsp">电视剧</a></li>
+				<li class=""><a href="index.jsp">电视剧</a></li>
 				<li class=""><a href="show.jsp">节目</a></li>
 			</ul>
 		</nav>
@@ -70,59 +74,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
 							<a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
 							<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+							<!-- 
+							<a href="#" onclick="javascript:window.external.AddFavorite('http://www.ygdy8.net', '电影天堂-ygdy8.net')" target="_self"><font color=red>收藏本站</font></a></a></li><li>
+                            <a href="index.html" onClick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://www.ygdy8.net/');return(false);" style="behavior: url(#default#homepage)">设为主页</a>
+						     -->
 						</div>
 						<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
 						</script>
 					</div>
 			</div>
 			
-		 <ul>
-	      <s:if test="#session.customer.customerName =='admin'">			
-				<li>		        
-		            <div class="add"><a href="addVideo.jsp"><i class="fa fa-plus"></i> 添加影片</a></div>
-		              <p>点击上面的链接可以添加一部影片</p>		        
-	        </li>
-	
-	        	<s:iterator value="videoList" status="status">
-					<li>
-            			<img src="<%=basePath%><s:property value='picture'/>">
-            			<p>
-              				<a href="video/video_showDetail?video.videoId=<s:property value='videoId'/>">
-                				<s:property value="videoName"/>
-              				</a>
-              				<a href="video/video_showEdit?video.videoId=<s:property value='videoId'/>">
-            		    		<i class = "fa fa-pencil"></i>
-              				</a>
-          		    		<a href="video/video_deleteVideo?video.videoId=<s:property value='vieoId'/>">
-           	 	    			<i class = "fa fa-trash"></i></a>
-           	 	    		<a href ="<%=basePath%><s:property value='path'/>">
-            		  	 		<i class = "fa fa-download"></i></a>
-            			</p>
-          			</li>	
-				</s:iterator>
-		 	</s:if>
-		 	<s:else>
-		 		<s:iterator value="videoList" status="status">
-		 			<li>
-		 				<img src="<%=basePath%><s:property value='picture'/>"/>
-		 				<p>
-		 					<a href="video/video_showDetail?video.videoId=<s:property value='videoId'/>">
-                				<s:property value="videoName"/>
-              				</a>
-		 				<!-- <a href="download/download_addDownload?video.videoId=<s:property value='videoId'/>&customer.customerName=<s:property value='#session.customer.customerName'/>" class="add-download">
-		 						<i class="fa fa-download"></i>
-		 					</a>
-		 					 -->
-		 					<a href="<%=basePath%><s:property value='path'/>">
-		 						<i class="fa fa-download"></i>
-		 					</a>
-		 				</p>
-		 			</li>
-		 		</s:iterator>
-		 	</s:else>
-          		</ul>
-          		
-          		
+		       		
 			</s:form>
 		</main>
 	</body>
