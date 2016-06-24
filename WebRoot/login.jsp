@@ -22,6 +22,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/font-awesome.css">
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/main.css">
 	
+	
 	<link rel="shortcut icon" href="<%=basePath%>images/logo.png">
 	
 	
@@ -29,11 +30,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     <header>
-       <div class="logo"><i class="fa fa-youtube-play"></i> DownloadV</div>	    
+       <div class="logo"><i class="fa fa-youtube-play"></i> Download</div>	    
     </header>  
     <main class="bg">
     
-	    <s:form action="customer/customer_login" method="post" cssClass="login">
+	   <s:form action="customer/customer_login" method="post" cssClass="login">
 	      <h3>请您登录</h3>
 	      <div class="form-group">
               <div class="input-group">
@@ -47,8 +48,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               </div>
               <s:fielderror fieldName="customer.password" cssClass="fielderror"/>
           </div>
-	      <button type="submit" class="btn btn-success btn-login">登 录 </button>
+          <div class="form-group">
+             <div class="input-group">
+               <button type="submit" class="btn btn-success btn-login">登录 </button>
+             </div>
+           </div>
 	    </s:form>
     </main>
+    
   </body>
 </html>

@@ -8,7 +8,11 @@
  */
 
 .bv-form .help-block {
+<<<<<<< HEAD
     margin-bottom: 0;
+=======
+    margin-bottom: 10px;
+>>>>>>> upstream/master
 }
 .bv-form .tooltip-inner {
     text-align: left;
@@ -19,6 +23,7 @@
 .nav-tabs li.bv-tab-error > a {
     color: #a94442;
 }
+<<<<<<< HEAD
 
 .bv-form .bv-icon-no-label {
 	top: 0;
@@ -28,3 +33,5 @@
 	top: 0;
 	z-index: 100;
 }
+=======
+>>>>>>> upstream/master

@@ -18,8 +18,12 @@ import org.apache.struts2.ServletActionContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+<<<<<<< HEAD
+import com.download.dao.VideoDao;	
+=======
 import com.download.dao.CustomerDao;
 import com.download.dao.VideoDao;
+>>>>>>> essfree/master
 import com.download.dao.VideoTypeDao;
 import com.download.model.Customer;
 import com.download.model.Video;
@@ -27,8 +31,7 @@ import com.download.model.Videotype;
 import com.opensymphony.xwork2.ActionSupport;
 
 @Controller @Scope("prototype")
-public class VideoAction extends ActionSupport
-{
+public class VideoAction extends ActionSupport{
 	@Resource VideoDao videoDao;
 	@Resource VideoTypeDao videoTypeDao;
 	private Video video;
@@ -256,7 +259,6 @@ public class VideoAction extends ActionSupport
 		videoList = videoDao.QueryVideoInfo(keyWords);
 		return "show_view";
 	}
-	
 	public Videotype videoType;
 
 
